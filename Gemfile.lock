@@ -201,6 +201,7 @@ GEM
     paperclip-compression (0.3.16)
       os (~> 0.9.6)
       paperclip (>= 4.3.6)
+    pg (0.20.0)
     public_suffix (2.0.5)
     puma (3.9.1)
     rack (2.0.3)
@@ -324,6 +325,7 @@ DEPENDENCIES
   omniauth-twitter
   paperclip
   paperclip-compression
+  pg
   puma (~> 3.7)
   rails (~> 5.1.1)
   recaptcha
