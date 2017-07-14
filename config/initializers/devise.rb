@@ -2,7 +2,7 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   config.omniauth :twitter, ENV.fetch('TWITTER_ID'), ENV.fetch('TWITTER_SECRET'), callback_url: "http://localhost:3000/users/auth/twitter/callback", :image_size => 'original'
-  config.omniauth :facebook, ENV.fetch('FACEBOOK_ID'), ENV.fetch('FACEBOOK_SECRET'), callback_url: "http://localhost:3000/users/auth/facebook/callback", image_size: 'large', info_fields: 'email,first_name,last_name,about,gender,birthday'
+  config.omniauth :facebook, ENV.fetch('FACEBOOK_ID'), ENV.fetch('FACEBOOK_SECRET'), callback_url: "http://www.vapejunk.com/users/auth/facebook/callback", image_size: 'large', info_fields: 'email,first_name,last_name,about,gender,birthday'
   config.omniauth :google_oauth2, ENV.fetch('GOOGLE_CLIENT_ID'), ENV.fetch('GOOGLE_CLIENT_SECRET'), {}
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
