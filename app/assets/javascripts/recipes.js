@@ -1,9 +1,38 @@
 $(document).ready(function(){
-	console.log('Hello')
+	$('#recipe_nic_pg').change(function(){
+		x = $(this).val()
+		y = 100 - x
+		$('#recipe_nic_vg').val(y)
+	})
+	$('#recipe_nic_vg').change(function(){
+		x = $(this).val();
+		y = 100 - x
+		$('#recipe_nic_pg').val(y)
+	})
+	$('#recipe_target_pg').change(function(){
+		x = $(this).val()
+		y = 100 - x
+		$('#recipe_target_vg').val(y)
+	})
+	$('#recipe_target_vg').change(function(){
+		x = $(this).val();
+		y = 100 - x
+		$('#recipe_target_pg').val(y)
+	})
 	recipalize();
 	$('#recipe_name, #recipe_amount, #recipe_nic_strength, #recipe_nic_vg, #recipe_target_nic, #recipe_target_vg').change(function(){recipalize()})
 	$(document).on('change', '.fname, .fpercentage, .fvg', function() { recipalize()})
+	$('#recipe_nic_pg').change(function(){
+		x = this.val()
+		y = 100 - x
+		$('#recipe_nic_vg').val(y)
+	})
 })
+  function handleChange(input) {
+    if (input.value < 0) input.value = 0;
+    if (input.value > 100) input.value = 100;
+  }
+  
 var recipalize = function(){
 	$('tbody').html('')
 	nic()
@@ -13,6 +42,7 @@ var recipalize = function(){
 	sum()
 
 }
+
 var nic = function(){
 	$('tbody').append('<tr><th>Nicotine</th><td>'+(nicml()).toFixed(1)+'</td></tr>')
 }
