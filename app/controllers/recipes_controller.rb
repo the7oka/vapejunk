@@ -35,7 +35,7 @@ class RecipesController < ApplicationController
 		if user_signed_in?
 			@recipe = current_user.recipes.build(recipe_params)
 			if @recipe.save
-				redirect_to "/r"
+				redirect_to "/profile/"+current_user.id.to_s
 			end
 		else
 			redirect_to "/users/sign_in"
