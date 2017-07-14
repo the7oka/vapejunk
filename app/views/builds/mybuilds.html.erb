@@ -1,0 +1,17 @@
+<section class="container-fluid" style="padding-top:50px">
+	<h1>My builds</h1>
+</section>
+<section class="container" style="padding:5px">
+	<% @builds.each do |r| %>
+	<div class="col-sm-3">
+	<a  target="_blank" href="<%=r.avatar.url%>"><div class="col-sm-12 text-center recipes" style="background-color:grey;border:1px solid black;border-radius:5px;padding-top:10px;margin-bottom:10px">
+		<img src="<%=r.avatar.url(:medium)%>" style="width:100%"/>
+		<h3 style="font-family:caviarbold;color:white"><%=r.name%></h3>
+	</div></a>
+	</div>
+	<% end %>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+<script>
+$('.recipes').matchHeight();
+</script>

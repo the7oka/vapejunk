@@ -1,0 +1,72 @@
+
+<section class="container" style="height:60px"></section>
+	<section class="container" style="background-color: black;height:150px;margin-bottom:50px;border-radius: 10px 10px 0px 0px;padding:0px">
+		<div class="col-sm-12" style="color:white;padding:10px;padding-right:0px;margin-right:0px;display:flex;flex-direction: row;">
+			<div class="col-sm-2 col-xs-5" style="padding:0;margin:0">
+			<%= image_tag @user.avatar.url(:medium), id: "profilePic" %>
+			</div>
+		</div>
+	</section>
+<section class="container">
+	<div class="col-sm-4 hidden-xs">
+		<div class=" col-sm-12 infoContainer">
+			<div style="padding:10px;padding-left:20px;font-size:120%;background-color:#eeeeee;margin-bottom:10px"><i class="fa fa-universal-access fa-lg" aria-hidden="true"></i> General info</div>
+			<p><span class="para"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Username</span><em> <%= @user.username.humanize %></em></p>
+			<p><span class="para"><i class="fa fa-id-card" aria-hidden="true"></i> Name</span><em> <%= @user.first_name.humanize %> <%= @user.last_name %></em></p>
+			<p><span class="para"><i class="fa fa-venus-mars" aria-hidden="true"></i> Gender</span><em> <%= @user.gender %></em></p>
+			<p><span class="para"><i class="fa fa-envelope" aria-hidden="true"></i> Email</span><em> <%= @user.email %></em></p>
+			<p><span class="para"><i class="fa fa-map-marker" aria-hidden="true"></i> Location</span><em> Cairo, Egypt</em></p>
+			<% if user_signed_in? && current_user == @user %>
+        	<a href="/profile/edit">Edit my  info</a>
+      		<% end %>
+		</div>
+	</div>
+	<div class="hidden-lg hidden-md hidden-sm col-xs-12">
+		<div class=" col-sm-12 infoContainer">
+			<div style="padding:10px;padding-left:20px;font-size:120%;background-color:#eeeeee;margin-bottom:10px"><i class="fa fa-universal-access fa-lg" aria-hidden="true"></i> General info</div>
+			<p><span class="para"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Username</span><em> <%= @user.username.humanize %></em></p>
+			<p><span class="para"><i class="fa fa-id-card" aria-hidden="true"></i> Name</span><em> <%= @user.first_name.humanize %> <%= @user.last_name %></em></p>
+			<p><span class="para"><i class="fa fa-venus-mars" aria-hidden="true"></i> Gender</span><em> <%= @user.gender %></em></p>
+			<p><span class="para"><i class="fa fa-envelope" aria-hidden="true"></i> Email</span><em> <%= @user.email %></em></p>
+			<p><span class="para"><i class="fa fa-map-marker" aria-hidden="true"></i> Location</span><em> Cairo, Egypt</em></p>
+		</div>
+	</div>
+	<div class="col-sm-8">
+	<div class="row">
+		<h2>My recipes</h2>
+			<% @user.recipes.each do |r| %>
+	<div class="col-sm-3">
+	<a href="/showrecipe/<%=r.id%>"><div class="col-sm-12 text-center recipes" style="background-color:grey;border:1px solid black;border-radius:5px;padding-top:10px;margin-bottom:10px">
+		<img src="<%=r.avatar.url(:medium)%>" style="width:100%"/>
+		<h3 style="font-family:caviarbold;color:white"><%=r.name%></h3>
+		<% if current_user == @user %>
+		<a href="/recipes/<%=r.id%>/destroy"><h5>delete</h5></a>
+		<% end %>
+	</div></a>
+	</div>
+	<% end %>
+	</div>
+	<div class="row">
+	<h2>My builds</h2>
+				<% @user.builds.each do |r| %>
+	<div class="col-sm-3">
+	<a  target="_blank" href="<%=r.avatar.url%>"><div class="col-sm-12 text-center recipes" style="background-color:grey;border:1px solid black;border-radius:5px;padding-top:10px;margin-bottom:10px">
+		<img src="<%=r.avatar.url(:medium)%>" style="width:100%"/>
+		<h3 style="font-family:caviarbold;color:white"><%=r.name%></h3>
+		<% if current_user == @user %>
+		<a href="/builds/<%=r.id%>/destroy"><h5>delete</h5></a>
+		<% end %>
+	</div></a>
+	</div>
+	<% end %>
+	</div>
+	</div>	
+</section>
+<section class='container emptycontainer'>
+<div class='col-sm-12' style="height:30px">
+</div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+<script>
+$('.recipes').matchHeight();
+</script>

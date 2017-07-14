@@ -1,0 +1,21 @@
+<section class="container-fluid" style="padding-top:50px">
+	<h1>New Build</h1>
+</section>
+<section class="container" style="padding:5px">
+	<%= form_for @build do |f| %>
+		Build Name
+		<%=f.text_field :name , class: 'form-control', required: true %>
+			Attach Build picture
+    <label class="btn btn-default btn-file imgattachbutton" data-toggle="tooltip" data-placement="bottom" title="Attach Image">
+    <%= f.file_field :avatar, accept: "image/*"%>
+    </label>
+    <br>
+    Tank (optional) 
+    <%=f.text_field :tank , class: 'form-control' %>
+    Wire (optional)
+    <%=f.text_field :wire , class: 'form-control'%>
+    Cotton (optional)
+    <%=f.text_field :cotton , class: 'form-control'%>
+    <%=f.submit "Submit", class: "btn btn-primary" %>
+	<% end %>
+</section>

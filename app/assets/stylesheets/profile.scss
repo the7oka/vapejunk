@@ -1,0 +1,155 @@
+body{
+	background-color: #eeeeee;
+}
+.jumbotronk{
+	background-color: #e9e9e9;
+	display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+}
+#profilePic{
+	width:100%;
+	border-radius: 5px;
+	text-align: center;
+	border:1px solid #006bb3;
+}
+.infoContainer{
+	font-family: tahoma;
+	background-color: white;
+	border: 1px solid #c3c3c3;
+	padding:5px;
+	margin-bottom: 20px;
+}
+.para{
+	color:grey;
+}
+.userPhoto{
+	border-radius:5px;
+	width:100px;
+	height:100px;
+	border:1px solid #006bb3;
+}
+#offers{
+	min-height:390px;
+}
+#alloffers,#pendingoffers,#inprocessoffers,#deliveredoffers,#requestedoffers{
+	display:none;
+	min-height:20px;
+}
+.penddet,.reqdet{
+	display:none;
+}
+#ulx {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+
+#ulx li {
+    float: left;
+}
+
+#ulx li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    cursor:pointer;
+}
+
+#ulx li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+#ulx li a.active {
+    color: white;
+    background-color: #aeaeae;
+}
+hr {
+  margin:0px;
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+#showMessage {
+  word-wrap:break-word;
+  background: white;
+  //border-radius: 5px;
+  padding:7px;
+
+}
+#postuserLogo{
+  height:45px;
+  width:45px;
+    max-width: 50px;
+  //border-radius: 5px;
+ }
+ .sidephoto1,.sidephoto2 {
+  width:100%;
+  //height:75%;
+  border-radius: 2px;
+  //border:1px solid black;
+  }
+  .showphotos{
+    padding: 0;
+    margin:0;
+  }
+  .ctext{
+    padding: 0;
+    margin:0;
+    font-family: tahoma;
+  }
+  .postsize{
+    width:100%;
+    padding:0;
+    margin:0;
+    padding-bottom:10px;
+  }
+   #new_complaintcomment {
+    width:100%;
+    margin-bottom: 10px;
+  }
+  .upArrow {
+    //border: 1px solid black;
+    background-image: url(/assets/comment-sprite.png);
+    background-position: 0px 0px;
+    width: 22px;
+    margin-right:5px;
+    cursor: pointer;
+  }
+  .downArrow {
+    //border: 1px solid black;
+    background-image: url(/assets/comment-sprite.png);
+    background-position: -20px 0px;
+    height: 20px;
+    width: 22px;
+    cursor: pointer;
+  }  
+  .rtl {
+    direction: rtl;
+    font-family: tahoma;
+}
+#hr {
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+#nully{
+  display:none;
+  color:red;
+}
+.thumbphoto{
+  width:100%;
+}
+.profilePicall{
+  width:200px;
+  height:200px;
+  border-radius:5px;
+}

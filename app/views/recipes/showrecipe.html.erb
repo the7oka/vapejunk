@@ -1,0 +1,99 @@
+<section class="container-fluid" style="padding-top:50px">
+	<h1><%=@recipe.name%> E-liguid recipe by <a href="/profile/<%=@recipe.user.id%>"><%=@recipe.user.first_name%> <%=@recipe.user.last_name%></a></h1>
+</section>
+<section class="container-fluid" style="padding:5px">
+	<%= nested_form_for @recipe do |f| %>
+	<section class="col-sm-3"  style="display:none">
+	<div class="panel panel-primary">
+  <div class="panel-heading">E-liquid</div>
+  <div class="panel-body">
+  	Name of your recipe
+	<%= f.text_field :name , class: "form-control", required: true, placeholder: "Name" %>
+	Attach recipe avatar
+    <label class="btn btn-default btn-file imgattachbutton" data-toggle="tooltip" data-placement="bottom" title="Attach Image">
+    <%= f.file_field :avatar, accept: "image/*"%>
+    </label>
+	Amount
+	<div class="input-group input-group">
+	<%= f.number_field :amount , class: "form-control", required: true, placeholder: "Amount" %>
+	<span class="input-group-addon" id="sizing-addon1">ml</span>
+	</div>
+  </div>
+</div>
+	<div class="panel panel-success">
+  <div class="panel-heading">Flavor</div>
+  <div class="panel-body" id="flavors">
+	<%= f.fields_for :flavors do |v| %>
+		Name
+    	<%= v.text_field :name , class: "form-control fname", required: true, placeholder: "flavor name" %>
+    	Percentage
+    	<div class="input-group input-group">
+    	<%= v.number_field :percentage , class: "form-control fpercentage", required: true, placeholder: "Percentage" %>
+    	<span class="input-group-addon" id="sizing-addon1">%</span>
+    	</div>
+    	<%= v.check_box :vg , class: "form-check-input fvg" %> VG
+    	<hr>
+  	<% end %>
+</div>
+  	<div class="panel-footer">
+  	<%= f.link_to_add "Add a flavor", :flavors, :data => { :target => "#flavors" } %>
+  	</div>
+</div>
+	</section>
+	<section class="col-sm-3" style="display:none">
+	<div class="panel panel-primary">
+  <div class="panel-heading">Nicotine<br><span style="font-size:80%">The info is going to be on the nicotine bottile you're using</span></div>
+  <div class="panel-body">
+  Nicotine strength
+  	<div class="input-group input-group">
+	<%= f.number_field :nic_strength , class: "form-control", required: true, placeholder: "Nicotine strength %"%>
+	<span class="input-group-addon" id="sizing-addon1">%</span>
+	</div>
+	Nicotine VG/PG percentage
+	<div class="input-group input-group">
+	<%= f.number_field :nic_vg , class: "form-control", required: true, placeholder: "Nicotine VG percentage"%>
+	<span class="input-group-addon" id="sizing-addon1">% VG</span>
+	</div>
+	</div>
+	</div>
+	</section>
+	<section class="col-sm-3" style="display:none">
+		<div class="panel panel-primary">
+  <div class="panel-heading">Target</div>
+  <div class="panel-body">
+  	Target nicotine percentage
+  	<div class="input-group input-group">
+	<%= f.number_field :target_nic , class: "form-control", required: true, placeholder: "Target nicotine percentage" %>
+	<span class="input-group-addon" id="sizing-addon1">%</span>
+	</div>
+	Target PG/VG percentage
+	<div class="input-group input-group">
+	<%= f.number_field :target_vg , class: "form-control", required: true, placeholder: "Target VG percentage" %>
+	<span class="input-group-addon" id="sizing-addon1">% VG</span>
+	</div>
+	</div>
+	</div>
+	</section>
+	<section class="col-sm-3"></section>
+	<section class="col-sm-6">
+	<div class="panel panel-primary">
+  <div class="panel-heading">Recipe</div>
+  <div class="panel-body">
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Add</th>
+      <th>ml</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>
+  </div>
+  </div>
+  <a href="/recipes/<%=@recipe.id%>"><button type="button" class="btn btn-default">Edit recipe</button></a>
+	</section>
+	<% end %>
+</section>
+<script type="text/javascript" src="/assets/recipes.js"></script>

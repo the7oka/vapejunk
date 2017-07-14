@@ -1,0 +1,44 @@
+<section class="container text-center" style="margin-top:80px">
+	<div class="col-sm-2"></div>
+	<div class="col-sm-4">
+	<a href="/recipes/new"><div style="background-color:grey;border:1px solid black;border-radius:5px;padding-top:30px;padding-bottom:30px;color:white">
+		<h1>E-liquid Recipe Calculator</h1>
+	</div></a>
+	</div>
+	<div class="col-sm-4">
+	<a href="/builds/new"><div style="background-color:grey;border:1px solid black;border-radius:5px;padding-top:30px;padding-bottom:30px;color:white">
+		<h1>Submit your latest build</h1>
+	</div></a>
+	</div>
+	</div>
+</section>
+<section classs="container text-center">
+	<h1>Top recipes</h1>
+	<div class="container">
+			<% @recipes.each do |r| %>
+	<div class="col-sm-3">
+	<a href="/showrecipe/<%=r.id%>"><div class="col-sm-12 text-center recipes" style="background-color:grey;border:1px solid black;border-radius:5px;padding-top:10px;margin-bottom:10px">
+		<img src="<%=r.avatar.url(:medium)%>" style="width:100%"/>
+		<h3 style="font-family:caviarbold;color:white"><%=r.name%></h3>
+		<h5><a href="/profile/<%=r.user.id%>" style="color:white">by <%=r.user.first_name%> <%=r.user.last_name%></a></h5>
+	</div></a>
+	</div>
+	<% end %>
+	</div>
+	<div class="container text-center">
+	<h1>Top builds</h1>
+		<% @builds.each do |r| %>
+	<div class="col-sm-3">
+	<a target="_blank" href="<%=r.avatar.url%>"><div class="col-sm-12 text-center recipes" style="background-color:grey;border:1px solid black;border-radius:5px;padding-top:10px;margin-bottom:10px">
+		<img src="<%=r.avatar.url(:medium)%>" style="width:100%"/>
+		<h3 style="font-family:caviarbold;color:white"><%=r.name%></h3>
+		<h5><a href="/profile/<%=r.user.id%>" style="color:white">by <%=r.user.first_name%> <%=r.user.last_name%></a></h5>
+	</div></a>
+	</div>
+	<% end %>
+	</div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+<script>
+$('.recipes').matchHeight();
+</script>

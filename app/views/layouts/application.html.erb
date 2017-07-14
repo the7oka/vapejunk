@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vape Junk <% if @title.present? %>| <%=@title.html_safe%> <%end%></title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="/assets/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src='/assets/jquery-ui.min.js'></script>
+    <link rel="stylesheet" href="/assets/jquery-ui.min.scss">
+    <link rel="stylesheet" href="/assets/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/application.scss">
+    <link rel="stylesheet" href="/assets/animate.css">
+    <script type="text/javascript" src="/assets/bootstrap.js"></script>
+    <%# stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield(:head) %>
+  </head>
+
+  <body>
+    <body>
+  	<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/" style="font-size:250%">
+        <span class="brandimg">
+          <img src="/assets/logo.png"/>
+        </span>
+        <span class="brandtitle">
+          Vape Junk
+        </span>
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      <li><a href="/">Home</a></li>
+        <li><a href="/recipes/new">E-liquid Calculator<span class="sr-only">(current)</span></a></li>
+      </ul>
+<!--       <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form> -->
+      <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+      	<li><a href="/profile/<%=current_user.id%>">Hello, <%=current_user.first_name%></a></li>
+      	<li><a href="<%=destroy_user_session_path%>">Sign out</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu" style="background-color:grey">
+            <li><a href="/myrecipes">My Recipes</a></li>
+            <li><a href="/mybuilds">My Builds</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/recipes/new">E-liquid Calculator</a></li>
+          </ul>
+        </li>
+      <% else %>
+      	<li><a href="/users/sign_in">Log in</a></li>
+        <li><a href="/users/sign_up">Join us</a></li>
+      <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    <%= yield %>
+<footer style="background-color: #222222">
+  <div class="container footercontainer">
+  <div class="col-sm-2">
+    <img src="/assets/logo.png" style="width:120px"/>
+  </div>
+  <div class="col-sm-10">
+    <div class="col-sm-4">
+    <h4 style="color:white">Vape Junk</h4>
+      <ul class="linkslisto">
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/recipes/new">E-liquid Calculator</a>
+        </li>
+        <li>
+          <a href="/recipes/top">Top Recipes</a>
+        </li>
+        <li>
+          <a href="/builds/top">Top Builds</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-4">
+    <h4 style="color:white">Users</h4>
+      <ul class="linkslisto">
+        <li>
+          <a href="/users/sign_in">Log in</a>
+        </li>
+        <li>
+          <a href="/users/sign_up">Join us</a>
+        </li>
+        <li>
+          <a href=<%if user_signed_in?%>"/myrecipes"<%else%>"/users/sign_up"<%end%>>My Recipes</a>
+        </li>
+        <li>
+          <a href=<%if user_signed_in?%>"/mybuilds"<%else%>"/users/sign_up"<%end%>>My Builds</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-4">
+      <h4 style="color:white">Who we are?</h4>
+        <ul class="linkslisto">
+          <li>
+            <a href="/">place holder</a>
+          </li>
+          <li>
+            <a href="/">place holder</a>
+          </li>
+          <li>
+            <a href="/">place holder</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    </div>
+    <div class="container socialconto">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center socialbuttons">
+                    <li>
+                        <a href="#">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-google fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+        <p class="copyright">Copyright &copy; vapejunk.com 2017</p>
+    </div>
+</footer>
+  </body>
+</html>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
