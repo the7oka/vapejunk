@@ -32,7 +32,7 @@ $(document).ready(function(){
     if (input.value < 0) input.value = 0;
     if (input.value > 100) input.value = 100;
   }
-  
+
 var recipalize = function(){
 	$('tbody').html('')
 	nic()
@@ -40,21 +40,28 @@ var recipalize = function(){
 	vgml()
 	pgml()
 	sum()
+	result()
 
 }
-
+var result = function(){
+	vg = $('#recipe_target_vg').val();
+	pg = 100 - vg;
+	$('tbody').append('<tr class="danger"><th>VG/PG</th><td>'+vg+'/'+pg+'</td></tr>');
+	nic = $('#recipe_target_nic').val();
+	$('tbody').append('<tr class="danger"><th>Nicotine</th><td>'+nic+'</td></tr>');
+}
 var nic = function(){
-	$('tbody').append('<tr><th>Nicotine</th><td>'+(nicml()).toFixed(1)+'</td></tr>')
+	$('tbody').append('<tr><th>Nicotine</th><td>'+(nicml()).toFixed(2)+'</td></tr>')
 }
 var nicml = function(){	
-	return (($('#recipe_target_nic').val()/100)*sumo())*(100/$('#recipe_nic_strength').val()).toFixed(1);
+	return (($('#recipe_target_nic').val()/100)*sumo())*(100/$('#recipe_nic_strength').val()).toFixed(2);
 }
 var flavor = function(){
 	var sum = $('#recipe_amount').val()
 	var flavorscount = $('.fpercentage').length
 	for (i = 0; i < flavorscount; i++) {
     	x = $('.fpercentage').eq(i).val()
-    	flavorml = ((x/100)*sumo()).toFixed(1)
+    	flavorml = ((x/100)*sumo()).toFixed(2)
     	flavorname = $('.fname').eq(i).val()
     	$('tbody').append('<tr><th>'+flavorname+'</th><td>'+flavorml+'</td></tr>')
 	}
@@ -111,7 +118,7 @@ var nicpg = function(){
 var vgml = function(){
 	vg = ($('#recipe_target_vg').val()/100)*sumo()
 	xvg = vg - (flavorvg() + nicvg())
-	$('tbody').append('<tr><th>VG</th><td>'+xvg.toFixed(1)+'</td></tr>')
+	$('tbody').append('<tr><th>VG</th><td>'+xvg.toFixed(2)+'</td></tr>')
 }
 var pgml = function(){
 	pg = ((100 - $('#recipe_target_vg').val())/100)*sumo()
@@ -119,7 +126,7 @@ var pgml = function(){
 	console.log(flavorpg())
 	console.log(nicpg())
 	xpg = pg - (flavorpg() + nicpg())
-	$('tbody').append('<tr><th>PG</th><td>'+xpg.toFixed(1)+'</td></tr>')
+	$('tbody').append('<tr><th>PG</th><td>'+xpg.toFixed(2)+'</td></tr>')
 }
 var sum = function(){
 	$('tbody').append('<tr class="success"><th>Sum</th><td>'+sumo()+'</td></tr>')
