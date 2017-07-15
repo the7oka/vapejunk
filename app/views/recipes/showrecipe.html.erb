@@ -1,5 +1,5 @@
 <section class="container-fluid" style="padding-top:50px">
-	<h1><%=@recipe.name%> E-liguid recipe by <a href="/profile/<%=@recipe.user.id%>"><%=@recipe.user.first_name%> <%=@recipe.user.last_name%></a></h1>
+	<h1><%=@recipe.name%> E-liquid recipe by <a href="/profile/<%=@recipe.user.id%>"><%=@recipe.user.first_name%> <%=@recipe.user.last_name%></a></h1>
 </section>
 <section class="container-fluid" style="padding:5px">
 	<%= nested_form_for @recipe do |f| %>
