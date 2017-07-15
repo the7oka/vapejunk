@@ -51,7 +51,9 @@ var result = function(){
 	$('tbody').append('<tr class="danger"><th>Nicotine</th><td>'+nic+'</td></tr>');
 }
 var nic = function(){
-	$('tbody').append('<tr><th>Nicotine</th><td>'+(nicml()).toFixed(2)+'</td></tr>')
+	vg = $(recipe_nic_vg).val();
+	pg = 100 - vg
+	$('tbody').append('<tr><th>Nicotine '+vg+'VG/'+pg+'PG'+'</th><td>'+(nicml()).toFixed(2)+'</td></tr>')
 }
 var nicml = function(){	
 	return (($('#recipe_target_nic').val()/100)*sumo())*(100/$('#recipe_nic_strength').val()).toFixed(2);
