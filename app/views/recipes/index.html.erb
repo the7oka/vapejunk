@@ -13,7 +13,7 @@
 	</div>
 </section>
 <section classs="container text-center">
-	<h1>Top recipes</h1>
+	<div class="text-center"><h1>Latest recipes</h1></div>
 	<div class="container">
 			<% @recipes.each do |r| %>
 	<div class="col-sm-3">
@@ -26,7 +26,7 @@
 	<% end %>
 	</div>
 	<div class="container text-center">
-	<h1>Top builds</h1>
+	<h1>latest builds</h1>
 		<% @builds.each do |r| %>
 	<div class="col-sm-3">
 	<a target="_blank" href="<%=r.avatar.url%>"><div class="col-sm-12 text-center recipes" style="background-color:grey;border:1px solid black;border-radius:5px;padding-top:10px;margin-bottom:10px">
